@@ -254,7 +254,7 @@ class GUIDraw(QWidget):
         _im_lab = torch.from_numpy(_im_lab).type(torch.FloatTensor).to(self.device)
 
         # _img_mask is 1) normalized ab 2) flipped mask
-        _img_mask = np.concatenate((self.im_ab0 / 110, (255-self.im_mask0) / 255), axis=0)
+        _img_mask = np.concatenate((self.im_ab0 / 110, (1.0 - self.im_mask0)), axis=0)
         _img_mask = torch.from_numpy(_img_mask).type(torch.FloatTensor).to(self.device)
 
         # _im_lab is the full color image, _img_mask is the ab_hint+mask
